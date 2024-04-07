@@ -1,0 +1,167 @@
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+// Define a struct representing an object
+type Object struct {
+	ID   int
+	Name string
+}
+
+// Define an array of objects
+var objects = []Object{
+	{ID: 3, Name: "Object C"},
+	{ID: 1, Name: "Object A"},
+	{ID: 2, Name: "Object B"},
+}
+
+// Define a function to sort objects by ID
+func sortByID(objects []Object) {
+	sort.Slice(objects, func(i, j int) bool {
+		return objects[i].ID < objects[j].ID
+	})
+}
+
+// Define a function to filter objects by a condition
+func filterObjects(objects []Object, condition func(Object) bool) []Object {
+	filtered := []Object{}
+	for _, obj := range objects {
+		if condition(obj) {
+			filtered = append(filtered, obj)
+		}
+	}
+	return filtered
+}
+
+// Define a function to find an object by ID
+func findObjectByID(objects []Object, id int) (Object, bool) {
+	for _, obj := range objects {
+		if obj.ID == id {
+			return obj, true
+		}
+	}
+	return Object{}, false
+}
+
+func main() {
+	fmt.Println("Original array:")
+	fmt.Println(objects)
+
+	// Sort the objects by ID
+	sortByID(objects)
+	fmt.Println("\nSorted array by ID:")
+	fmt.Println(objects)
+
+	// Filter objects where ID is greater than 1
+	filtered := filterObjects(objects, func(obj Object) bool {
+		return obj.ID > 1
+	})
+	fmt.Println("\nFiltered array where ID > 1:")
+	fmt.Println(filtered)
+
+	// Find an object by ID
+	idToFind := 4
+	foundObj, found := findObjectByID(objects, idToFind)
+	if found {
+		fmt.Printf("\nFound object with ID %d: %+v\n", idToFind, foundObj)
+	} else {
+		fmt.Printf("\nObject with ID %d not found.\n", idToFind)
+	}
+}
+
+// LOOP
+// func main() {
+// 	x := 0
+// 	for x < 5 {
+// 		// fmt.Printf("val of x is %v \n", x)
+// 		x++
+// 	}
+
+// 	for i := 0; i < 6; i++ {
+// 		// fmt.Printf("val of x is %v \n", i)
+// 	}
+
+// 	names := []string{"yoshi", "mario", "peach", "bower", "luigi"}
+// 	for i := 0; i < len(names); i++ {
+// 		fmt.Printf("val of x is %v \n", names[i])
+// 	}
+
+// }
+
+// // STANDART LIBRARY
+// func main() {
+
+// 	// STRINGS PACKAGE
+// 	greeting := "HELLO THeRE MY"
+
+// 	fmt.Println(strings.Contains(greeting, "FRIENDS!"), "Searching if string exist")
+// 	fmt.Println(strings.ReplaceAll(greeting, "MY", "MY FRIENDS!"), "Replace Word")
+// 	fmt.Println(strings.ToUpper(greeting), "TO Uppercase")
+// 	fmt.Println(strings.Index(greeting, "e"), "SEARCHING INDEX")
+// 	fmt.Println(strings.Split(greeting, " "), "SPLIT INDEX")
+
+// 	scores := []int{100, 90, 80, 70, 60, 50, 40, 100}
+// 	sort.Ints(scores)
+
+// 	fmt.Println(scores, "SORTING INT FROM LOW TO HIGH")
+
+// 	index := sort.SearchInts(scores, 100)
+
+// 	fmt.Println(index, "SEARCHING INDEX WITH SORT INT")
+
+// 	names := []string{"yoshi", "mario", "peach", "bower", "luigi"}
+
+// 	sort.Strings(names)
+// 	fmt.Println(names)
+// 	fmt.Println(sort.SearchStrings(names, "yoshi"))
+
+// }
+
+// ARRAY AND SLICES
+
+// func main() {
+// 	// DECLARE
+// 	var ages [3]int = [3]int{20, 25, 35}
+// 	names := [4]string{"yoshi", "mario", "peach", "bower"}
+// 	fmt.Println(ages, len(ages))
+// 	fmt.Println(names, len(names))
+
+// 	// SLICES
+// 	var scores = []int{100, 90, 80, 70, 60, 50, 40, 100}
+// 	scores[6] = 90
+// 	scores = append(scores, 10)
+
+// 	fmt.Println(scores, len(scores))
+
+// 	// SLICES RANGES
+// 	rangeOne := names[1:3]
+// 	rangeTwo := names[2:]
+// 	rangeThree := names[:3]
+
+// 	fmt.Println(rangeOne)
+// 	fmt.Println(rangeTwo)
+// 	fmt.Println(rangeThree)
+// }
+
+// VARIABEL STRINGS NUMBER , PRINT AND FORMATTING STRINGS
+// func main() {
+// 	// var string string = "umar"
+// 	// var stringTwo = "Luigi"
+// 	// some := "asd"
+
+// 	// fmt.Println(string)
+// 	// fmt.Println(stringTwo)
+// 	// fmt.Println(some)
+
+// 	// Int8 := 127
+// 	// Float := 232.92231
+// 	// String := "nasdasd"
+// 	// fmt.Printf("my name is %v an my age is %v \n", String, Int8)
+// 	// fmt.Printf("my name is %q an my age is %q \n", String, Int8)
+// 	// fmt.Printf("my name is %T an my age is %T \n", String, Int8)
+// 	// fmt.Printf("my name is %T an my age is %0.2f \n", String, Float)
+
+// }

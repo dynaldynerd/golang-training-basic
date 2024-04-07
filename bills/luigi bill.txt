@@ -1,0 +1,5 @@
+Bill breakdown: 
+asd:                      ...$9.99 
+kue:                      ...$10.29 
+tip:                      ...$99.99
+total:                    ...$120.27
